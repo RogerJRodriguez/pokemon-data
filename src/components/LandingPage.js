@@ -27,7 +27,7 @@ const LandingPage = () => {
     return (
         <div class="text-center">
             <Carousel interval='2000' controls={false} indicators={false}>
-                {pokes1.map(i => { return <Carousel.Item><img src={`/3dpokemonsprites/${i}.gif`} style={{ marginTop: '10px', marginBottom: '8px' }}/></Carousel.Item>})}
+                {pokes1.map(i => { return <Carousel.Item><img src={`./3dpokemonsprites/${i}.gif`} style={{ marginTop: '10px', marginBottom: '8px' }}/></Carousel.Item>})}
             </Carousel>
         </div>
     );
