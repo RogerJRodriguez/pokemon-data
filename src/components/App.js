@@ -26,7 +26,7 @@ class App extends React.Component {
             response.data.type2_damage = type2.data.damage_relations;
         }
         term = term.toLowerCase();
-        response.data.image = `/3dpokemonsprites/${term}.gif`;
+        response.data.image = `./3dpokemonsprites/${term}.gif`;
         this.setState({ pokemonData: response.data, landingPageOn: false });
     }
 
