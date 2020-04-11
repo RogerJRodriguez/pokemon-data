@@ -159,7 +159,6 @@ class InfoCard extends React.Component {
             typeDamage.twoTimesResist = twoTimesResist;
             typeDamage.fourTimesResist = fourTimesResist;
             typeDamage.immune = immune;
-            console.log(`immune: ${immune}`);
         } else {
             for(var i = 0; i < type1.double_damage_from.length; i++){
                 twoTimesWeak.push(type1.double_damage_from[i].name);
@@ -183,9 +182,7 @@ class InfoCard extends React.Component {
     render(props) {
         const { 
             name, 
-            sprites, 
             image,
-            damage_relations,
             type1_damage,
             type2_damage,
             types

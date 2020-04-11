@@ -3,6 +3,7 @@ import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
 import InfoCard from './InfoCard';
 import LandingPage from './LandingPage';
+import genviiiPokemon from '../gen8pokemonTypes';
 import "bootswatch/dist/cyborg/bootstrap.min.css";
 
 class App extends React.Component {
@@ -16,18 +17,47 @@ class App extends React.Component {
     };
 
     onSearchSubmit = async (term) => {
-        const response = await unsplash.get(`/pokemon/${term}`);
-        const types = response.data.types;
+        var types = [];
+        var data = {};
+        var tmpTerm = term;
+        term = term.toLowerCase();
+
+        try {
+            const response = await unsplash.get(`/pokemon/${term}`);
+            types = response.data.types;
+            data.types = types;
+        } catch(err) {
+            types = [
+                { 
+                    type: {
+                        name: '' 
+                    }
+                } 
+            ];
+
+            types[0].type.name = genviiiPokemon[tmpTerm].type1;
+            if(genviiiPokemon[tmpTerm].type2) {
+                types.push({
+                    type: {
+                        name: ''
+                    }
+                });
+                types[1].type.name = genviiiPokemon[tmpTerm].type2;
+            }
+
+            data.types = types;
+        }
         const type1 = await unsplash.get(`/type/${types[0].type.name}`);
-        response.data.damage_relations = type1.data.damage_relations;
-        response.data.type1_damage = type1.data.damage_relations;
+        
+        data.type1_damage = type1.data.damage_relations;
         if( types[1] ) {
             const type2 = await unsplash.get(`/type/${types[1].type.name}`);
-            response.data.type2_damage = type2.data.damage_relations;
+            data.type2_damage = type2.data.damage_relations;
         }
         term = term.toLowerCase();
-        response.data.image = `./3dpokemonsprites/${term}.gif`;
-        this.setState({ pokemonData: response.data, landingPageOn: false });
+        data.name = term;
+        data.image = `./3dpokemonsprites/${term}.gif`;
+        this.setState({ pokemonData: data, landingPageOn: false });
     }
 
     render() {

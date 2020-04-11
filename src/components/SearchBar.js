@@ -10,8 +10,7 @@ class SearchBar extends React.Component {
 
     onSearchResultSelect = (e, { result }) => {
         this.setState({ value: result.title });
-        this.props.onSubmit(result.title.toLowerCase());
-        console.log(result.title);
+        this.props.onSubmit(result.title);
     }
 
     onSearchChange = (e, { value }) => {

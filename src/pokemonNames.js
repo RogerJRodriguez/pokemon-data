@@ -908,8 +908,10 @@ var pokeArray = [
     "Dreepy", 
     "Drakloak", 
     "Dragapult", 
-    "Zacian", 
+    "Zacian",
+    "Zacian-crowned", 
     "Zamazenta", 
+    "Zamazenta-crowned",
     "Eternatus"
 ];
 

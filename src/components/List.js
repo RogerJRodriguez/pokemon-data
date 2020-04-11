@@ -11,12 +11,6 @@ const List = (props) => {
         immune
     } = props;
     
-    console.log(fourTimesWeak);
-    console.log(twoTimesWeak);
-    console.log(fourTimesResist);
-    console.log(twoTimesResist);
-    console.log(immune);
-    
     var list = [];
     if(fourTimesWeak?.length > 0) {
         list.push(<ListGroup.Item><span style={{ color: 'red', fontWeight: 'bold', marginRight: '5px' }}>4x:   </span>{fourTimesWeak?.map(i => { var color = typeColors[i].background; return <span className={'badge badge-pill'} style={{ background: `${color}`, color: 'white', marginRight: '5px' }}>{i} </span> })}</ListGroup.Item>);
