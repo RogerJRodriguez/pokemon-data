@@ -1,8 +1,8 @@
 import React from 'react';
-import { Accordion, Icon } from 'semantic-ui-react';
 import { Nav } from 'react-bootstrap';
 import List from './List';
 import typeColors from '../typeColors';
+import StatsChart from './StatsChart';
 
 class InfoCard extends React.Component {
     state = { 
@@ -185,24 +185,32 @@ class InfoCard extends React.Component {
             image,
             type1_damage,
             type2_damage,
-            types
+            types,
+            stats
         } = this.props.pokemonData;
 
         let pokeImage;
         if( name ) {
             var typeDamage = this.typeDamageCalculations(type1_damage, type2_damage);
 
-            pokeImage = <img src={`${image}`} style={{ marginTop: '10px', marginBottom: '8px' }}/>;
+            pokeImage = <img src={`${image}`} style={{ width: '100%', height: 'auto', marginTop: '-100px' }}/>;
+
+            var statsChart = <StatsChart stats={stats}/>;
+            
             var pokeName = <span>{name.toUpperCase()}</span>;
+            
             var color = typeColors[types[0]?.type?.name].background;
             var pokeTyping = [<span className={'badge badge-pill'} style={{ background: `${color}`, color: 'white', marginRight: '5px' }}>{types[0]?.type?.name}</span>];
+            var typeStylingShift = '30px';
             if(types[1]) {
+                typeStylingShift = '10px';
                 color = typeColors[types[1]?.type?.name].background;
                 pokeTyping.push(<span className={'badge badge-pill'} style={{ background: `${color}`, color: 'white', marginRight: '5px' }}>{types[1]?.type?.name}</span>);
             }
+            
             var navbar = (
                 <Nav 
-                        style={{ marginTop: '40px' }} 
+                        style={{ marginTop: '20px' }} 
                         variant="pills"
                         defaultActiveKey={this.state.activeKey}
                         onSelect={(selected) => this.setState({ activeKey: selected })}
@@ -223,13 +231,18 @@ class InfoCard extends React.Component {
         return (
             <div>
                 <div class="jumbotron" style={{ background: '#000' }}>
-                    <div class="text-center">
-                        {pokeImage}
-                    </div>
-                    <div className="text-center" style={{ color: 'white', fontWeight: 'bold', marginBottom: '5px' }}>
+                    <div className="text-center" style={{ color: 'white', fontWeight: 'bold', fontSize: '16px', marginBottom: '5px' }}>
                         {pokeName}
                     </div>
-                    <div className="text-center">
+                    <div>
+                        <div style={{ display: 'inline-block', width: '35%' }}>
+                            {pokeImage}
+                        </div>
+                        <div style={{ display: 'inline-block', width: '180px', height: '90px', marginLeft: '10px' }}>
+                            {statsChart}
+                        </div>
+                    </div>
+                    <div  style={{ color: 'white', fontWeight: 'bold', marginBottom: '5px', marginLeft: `${typeStylingShift}` }}>
                         {pokeTyping}
                     </div>
 

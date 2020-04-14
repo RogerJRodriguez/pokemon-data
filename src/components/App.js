@@ -26,6 +26,7 @@ class App extends React.Component {
             const response = await unsplash.get(`/pokemon/${term}`);
             types = response.data.types;
             data.types = types;
+            data.stats = response.data.stats;
         } catch(err) {
             types = [
                 { 
@@ -44,7 +45,7 @@ class App extends React.Component {
                 });
                 types[1].type.name = genviiiPokemon[tmpTerm].type2;
             }
-
+            data.stats = genviiiPokemon[tmpTerm].stats;
             data.types = types;
         }
         const type1 = await unsplash.get(`/type/${types[0].type.name}`);
