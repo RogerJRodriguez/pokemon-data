@@ -45,7 +45,9 @@ class App extends React.Component {
                 });
                 types[1].type.name = genviiiPokemon[tmpTerm].type2;
             }
-            data.stats = genviiiPokemon[tmpTerm].stats;
+
+            // have to reverse stats array to match pokeApi
+            data.stats = genviiiPokemon[tmpTerm].stats.reverse();
             data.types = types;
         }
         const type1 = await unsplash.get(`/type/${types[0].type.name}`);
