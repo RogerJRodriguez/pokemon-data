@@ -193,7 +193,7 @@ class InfoCard extends React.Component {
         if( name ) {
             var typeDamage = this.typeDamageCalculations(type1_damage, type2_damage);
 
-            pokeImage = <img src={`${image}`} style={{ width: '100%', height: '60%', marginTop: '-100px' }}/>;
+            pokeImage = <img src={`${image}`} style={{ maxWidth: '103px', maxHeight: '90px', marginTop: '-100px', marginLeft: '5px' }}/>;
 
             var statsChart = <StatsChart stats={stats}/>;
             
@@ -235,7 +235,7 @@ class InfoCard extends React.Component {
                         {pokeName}
                     </div>
                     <div>
-                        <div style={{ display: 'inline-block', width: '130px', height: '75%' }}>
+                        <div style={{ display: 'inline-block', width: '35%' }}>
                             {pokeImage}
                         </div>
                         <div style={{ display: 'inline-block', width: '180px', height: '90px', marginLeft: '10px' }}>
