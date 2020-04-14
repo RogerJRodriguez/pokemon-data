@@ -235,7 +235,7 @@ class InfoCard extends React.Component {
                         {pokeName}
                     </div>
                     <div>
-                        <div style={{ display: 'inline-block', width: '35%' }}>
+                        <div style={{ display: 'inline-block', width: '35%', height: '75%' }}>
                             {pokeImage}
                         </div>
                         <div style={{ display: 'inline-block', width: '180px', height: '90px', marginLeft: '10px' }}>
