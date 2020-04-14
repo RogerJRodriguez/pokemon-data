@@ -25,7 +25,7 @@ class App extends React.Component {
         try {
             const response = await unsplash.get(`/pokemon/${term}`);
             types = response.data.types;
-            data.types = types;
+            data.types = types.reverse();
             data.stats = response.data.stats;
         } catch(err) {
             types = [
