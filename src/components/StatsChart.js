@@ -85,7 +85,7 @@ const StatsChart = (props) => {
     // decide stat color using Sp. Def quartiles
     if(stats[4] <= 60) {
         statColors.push('rgba(255, 99, 132, 0.2)');
-        borderStatColors.push('rgba(255, 99, 132, 1`)');
+        borderStatColors.push('rgba(255, 99, 132, 1)');
     } else if(stats[4] <= 80) {
         statColors.push('rgba(255, 159, 64, 0.2)');
         borderStatColors.push('rgba(255, 159, 64, 1)');
